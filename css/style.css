@@ -1,0 +1,520 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #34495e;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Utilities */
+.tab-item {
+  padding: 10px;
+}
+
+#nfl-logo {
+  width: 72px;
+  height: 72px;
+}
+
+#mlb-logo {
+  width: 71px;
+  height: 40px;
+}
+
+.tab-border {
+  border: #fff 4px solid;
+}
+
+/* Title */
+#title {
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px;
+  padding-top: 20px;
+  color: #fff;
+}
+
+#title h1 {
+  letter-spacing: 5px;
+}
+
+/* Sports Option */
+
+.container-1 {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px auto;
+}
+
+/* Sports Tab */
+/* NBA Showcase & MLB Showcase */
+/* Both league got 30 teams === same set up */
+
+#nba-tab-content, #mlb-tab-content {
+  width: 80%;
+  margin: auto;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+}
+
+#wheel {
+  position: relative;
+}
+
+.container-2 {
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  border-radius: 50%;
+  border: 10px solid #dde;
+  position: relative;
+  overflow: hidden;
+  transition: transform 10s ease-out;
+}
+
+.container-2 div {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  clip-path: polygon(60% 0, 50% 100%, 40% 0);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  left: 120px;
+  padding-bottom: 50px;
+}
+
+.container-2 h3 {
+  transform: rotate(270deg);
+}
+
+#nba-spin-btn, #mlb-spin-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: #e2e2e2;
+  text-transform: uppercase;
+  border: 8px solid #fff;
+  font-weight: bold;
+  font-size: 20px;
+  color: #a2a2a2;
+  width: 80px;
+  height: 80px;
+  font-family: sans-serif;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+#nba-spin-btn::before, #mlb-spin-btn::before {
+  content: '';
+  top: -28px;
+  width: 20px;
+  height: 30px;
+  background: #fff;
+  clip-path: polygon(50% 0% 15% 100% 85% 100%);
+}
+
+#nba-spin-btn:active, #mlb-spin-btn:active {
+  text-align: center;
+  height: 70px;
+  width: 70px;
+  font-size: 16px;
+}
+
+#nba-spin-btn:active::before, #mlb-spin-btn:active::before {
+  content: '';
+  left: 17px;
+  top: -30px;
+  width: 20px;
+  height: 30px;
+  background: #fff;
+  clip-path: polygon(50% 0% 15% 100% 85% 100%);
+}
+
+#nba-spin-btn::before, #mlb-spin-btn::before {
+  content: '';
+  position: absolute;
+  top: -35px;
+  left: 22px;
+  width: 20px;
+  height: 30px;
+  background: #fff;
+  clip-path: polygon(50% 0, 15% 100%, 85% 100%);
+}
+
+#nba-tab-content .container-2 .selected, #mlb-tab-content .container-2 .selected {
+  background: #000 !important;
+}
+
+/* NBA Teams */
+/* Atlantic */
+#nba-tab-content .container-2 .bos {
+  background: #3f51b5;
+  transform: rotate(0deg);
+}
+
+#nba-tab-content .container-2 .bkn {
+  background: #ff9880;
+  transform: rotate(12deg);
+}
+
+#nba-tab-content .container-2 .nyk {
+  background: #e91e63;
+  transform: rotate(24deg);
+}
+#nba-tab-content .container-2 .phi {
+  background: #4caf50;
+  transform: rotate(36deg);
+}
+#nba-tab-content .container-2 .tor {
+  background: #009688;
+  transform: rotate(48deg);
+}
+
+/* Pacific */
+#nba-tab-content .container-2 .gsw {
+  background: #3f51b5;
+  transform: rotate(60deg);
+}
+
+#nba-tab-content .container-2 .lac {
+  background: #ff9880;
+  transform: rotate(72deg);
+}
+
+#nba-tab-content .container-2 .lal {
+  background: #e91e63;
+  transform: rotate(84deg);
+}
+
+#nba-tab-content .container-2 .phx {
+  background: #4caf50;
+  transform: rotate(96deg);
+}
+
+#nba-tab-content .container-2 .sac {
+  background: #009688;
+  transform: rotate(108deg);
+}
+
+/* Central */
+
+#nba-tab-content .container-2 .chi {
+  background: #3f51b5;
+  transform: rotate(120deg);
+}
+
+#nba-tab-content .container-2 .cle {
+  background: #ff9880;
+  transform: rotate(132deg);
+}
+
+#nba-tab-content .container-2 .det {
+  background: #e91e63;
+  transform: rotate(144deg);
+}
+
+#nba-tab-content .container-2 .ind {
+  background: #4caf50;
+  transform: rotate(156deg);
+}
+
+#nba-tab-content .container-2 .mil {
+  background: #009688;
+  transform: rotate(168deg);
+}
+
+/* Southeast */
+
+#nba-tab-content .container-2 .atl {
+  background: #3f51b5;
+  transform: rotate(180deg);
+}
+
+#nba-tab-content .container-2 .cha {
+  background: #ff9880;
+  transform: rotate(192deg);
+}
+
+#nba-tab-content .container-2 .mia {
+  background: #e91e63;
+  transform: rotate(204deg);
+}
+
+#nba-tab-content .container-2 .orl {
+  background: #4caf50;
+  transform: rotate(216deg);
+}
+
+#nba-tab-content .container-2 .was {
+  background: #009688;
+  transform: rotate(228deg);
+}
+
+/* Northwst */
+
+#nba-tab-content .container-2 .den {
+  background: #3f51b5;
+  transform: rotate(240deg);
+}
+
+#nba-tab-content .container-2 .min {
+  background: #ff9880;
+  transform: rotate(252deg);
+}
+
+#nba-tab-content .container-2 .okc {
+  background: #e91e63;
+  transform: rotate(264deg);
+}
+
+#nba-tab-content .container-2 .por {
+  background: #4caf50;
+  transform: rotate(276deg);
+}
+
+#nba-tab-content .container-2 .uta {
+  background: #009688;
+  transform: rotate(288deg);
+}
+
+/* Southwest */
+
+#nba-tab-content .container-2 .dal {
+  background: #3f51b5;
+  transform: rotate(300deg);
+}
+
+#nba-tab-content .container-2 .hou {
+  background: #ff9880;
+  transform: rotate(312deg);
+}
+
+#nba-tab-content .container-2 .mem {
+  background: #e91e63;
+  transform: rotate(324deg);
+}
+
+#nba-tab-content .container-2 .nop {
+  background: #4caf50;
+  transform: rotate(336deg);
+}
+
+#nba-tab-content .container-2 .sas {
+  background: #009688;
+  transform: rotate(348deg);
+}
+
+/* MLB Teams */
+/* American League Central */
+#mlb-tab-content .container-2 .cws {
+  background: #3f51b5;
+}
+
+#mlb-tab-content .container-2 .cle {
+  background: #ff9880;
+  transform: rotate(12deg);
+}
+
+#mlb-tab-content .container-2 .det {
+  background: #e91e63;
+  transform: rotate(24deg);
+}
+#mlb-tab-content .container-2 .kc {
+  background: #4caf50;
+  transform: rotate(36deg);
+}
+#mlb-tab-content .container-2 .min {
+  background: #009688;
+  transform: rotate(48deg);
+}
+
+/* National League Central */
+#mlb-tab-content .container-2 .chc {
+  background: #3f51b5;
+  transform: rotate(60deg);
+}
+
+#mlb-tab-content .container-2 .cin {
+  background: #ff9880;
+  transform: rotate(72deg);
+}
+
+#mlb-tab-content .container-2 .mil {
+  background: #e91e63;
+  transform: rotate(84deg);
+}
+
+#mlb-tab-content .container-2 .pit {
+  background: #4caf50;
+  transform: rotate(96deg);
+}
+
+#mlb-tab-content .container-2 .stl {
+  background: #009688;
+  transform: rotate(108deg);
+}
+
+/* American League East */
+
+#mlb-tab-content .container-2 .bal {
+  background: #3f51b5;
+  transform: rotate(120deg);
+}
+
+#mlb-tab-content .container-2 .bos {
+  background: #ff9880;
+  transform: rotate(132deg);
+}
+
+#mlb-tab-content .container-2 .nyy {
+  background: #e91e63;
+  transform: rotate(144deg);
+}
+
+#mlb-tab-content .container-2 .tb {
+  background: #4caf50;
+  transform: rotate(156deg);
+}
+
+#mlb-tab-content .container-2 .tor {
+  background: #009688;
+  transform: rotate(168deg);
+}
+
+/* National League East */
+
+#mlb-tab-content .container-2 .atl {
+  background: #3f51b5;
+  transform: rotate(180deg);
+}
+
+#mlb-tab-content .container-2 .mia {
+  background: #ff9880;
+  transform: rotate(192deg);
+}
+
+#mlb-tab-content .container-2 .nym {
+  background: #e91e63;
+  transform: rotate(204deg);
+}
+
+#mlb-tab-content .container-2 .phi {
+  background: #4caf50;
+  transform: rotate(216deg);
+}
+
+#mlb-tab-content .container-2 .wsh {
+  background: #009688;
+  transform: rotate(228deg);
+}
+
+/* American League West */
+
+#mlb-tab-content .container-2 .hou {
+  background: #3f51b5;
+  transform: rotate(240deg);
+}
+
+#mlb-tab-content .container-2 .laa {
+  background: #ff9880;
+  transform: rotate(252deg);
+}
+
+#mlb-tab-content .container-2 .oak {
+  background: #e91e63;
+  transform: rotate(264deg);
+}
+
+#mlb-tab-content .container-2 .sea {
+  background: #4caf50;
+  transform: rotate(276deg);
+}
+
+#mlb-tab-content .container-2 .tex {
+  background: #009688;
+  transform: rotate(288deg);
+}
+
+/* National League West */
+
+#mlb-tab-content .container-2 .ari {
+  background: #3f51b5;
+  transform: rotate(300deg);
+}
+
+#mlb-tab-content .container-2 .col {
+  background: #ff9880;
+  transform: rotate(312deg);
+}
+
+#mlb-tab-content .container-2 .lad {
+  background: #e91e63;
+  transform: rotate(324deg);
+}
+
+#mlb-tab-content .container-2 .sd {
+  background: #4caf50;
+  transform: rotate(336deg);
+}
+
+#mlb-tab-content .container-2 .sf {
+  background: #009688;
+  transform: rotate(348deg);
+}
+
+/* Table */
+
+#left-table, #right-table {
+  border: 5px solid #000;
+  padding: 20px;
+  margin: 10px;
+}
+
+.input-border {
+  border: 5px solid #000;
+}
+/* Hide content initially */
+#nba-tab-content, #nfl-tab-content, #mlb-tab-content {
+  display: none;
+}
+
+.show {
+  display: flex !important;
+}
+
+
+
+
+
+
+
+
+
