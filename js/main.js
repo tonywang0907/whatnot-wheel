@@ -119,3 +119,9 @@ function removeShow() {
 }
 
 tabItems.forEach(item => item.addEventListener('click', selectItem));
+
+
+/* Wheel Reset Button */
+document.getElementById("reset-btn").addEventListener("click", function() {
+  location.reload();
+});
