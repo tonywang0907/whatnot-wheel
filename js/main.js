@@ -20,9 +20,10 @@ function NBASpin() {
   nbaTeamRepCheck(rotateAmount);
 
   let idx = rotateAmount.value % nbaTeamsLength;
-  // console.log(idx);
+  console.log(idx);
 
   let selectedTeam = nbaTeamsArray[nbaTeamsLength - idx];
+  console.log("team:", selectedTeam.textContent);
   nbaTeamsArray[nbaTeamsLength - idx] = "selected";
   nbaNumSelected += 1;
 

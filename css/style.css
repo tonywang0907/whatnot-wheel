@@ -38,14 +38,14 @@ body {
 #title {
   align-items: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 20px;
   padding-top: 20px;
   color: #fff;
 }
 
 #title h1 {
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
 /* Sports Option */
@@ -510,16 +510,17 @@ body {
   display: flex !important;
 }
 
-/* Reset Button */
-.container-3 {
+/* Wheel Buttons */
+#wheel-btns {
   padding: 20px 0;
-  width: 100%;
-  text-align: center;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#wheel-reset-btn #reset-btn {
+/* Reset Button */
+#wheel-btns #reset-btn {
+  font-weight: bold;
   color: #000;
   background: #fff;
   height: auto;
@@ -527,7 +528,34 @@ body {
   padding: 5px 10px;
   border: 5px solid #000;
   border-radius: 50px;
+  cursor: pointer;
+  margin-left: 40px;
 }
+
+/* Submit Button for the URL */
+form {
+  display: flex;
+}
+
+#wheel-btns input[type="text"] {
+  padding: 5px 10px;
+  width: 250px;
+  border: 5px solid #000;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+#wheel-btns button[type="submit"] {
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-left: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  cursor: pointer;
+}
+
 
 
 
