@@ -48,6 +48,56 @@ function nbaTeamRepCheck(rotateAmount) {
   }
 }
 
+/* NFL Wheel Spin */
+let nflContainer = document.querySelector("#nfl-tab-content .container-2");
+let nflBtn = document.getElementById("nfl-spin-btn");
+let nflTeamsArray = Array.from(document.querySelectorAll("#wheel .nfl-team"));
+let nflNumSelected = 0;
+
+const nflTeamsLength = nflTeamsArray.length;
+nflTeamsArray[nflTeamsArray.length] = nflTeamsArray[0];
+
+function NFLSpin() {
+  let rotation = 0;
+
+  if (nflNumSelected === nflTeamsLength) {
+    document.getElementById("nfl-spin-btn").disabled = false;
+    return;
+  }
+
+  let rotateAmount = { value: 0 }; 
+
+  nflTeamRepCheck(rotateAmount);
+
+  let idx = rotateAmount.value % nflTeamsLength;
+  // console.log(idx);
+
+  let selectedTeam = nflTeamsArray[nflTeamsLength - idx];
+  // console.log("team:", selectedTeam.textContent);
+  nflTeamsArray[nflTeamsLength - idx] = "selected";
+  nflNumSelected += 1;
+
+  let rotationIncrement = 360 / nflTeamsLength; 
+  rotation = rotationIncrement * rotateAmount.value; 
+  nflContainer.style.transform = "rotate(" + rotation + "deg)";
+
+  
+  nflContainer.addEventListener("transitionend", function() {
+    selectedTeam.classList.add("selected");
+  });
+}
+
+function nflTeamRepCheck(rotateAmount) {
+  rotateAmount.value = Math.floor(Math.random() * 600);
+  let idx = rotateAmount.value % nflTeamsLength;
+
+  let selectedTeam = nflTeamsArray[nflTeamsLength - idx];
+
+  if (selectedTeam === "selected") {
+    nflTeamRepCheck(rotateAmount);
+  }
+}
+
 /* MLB Wheel Spin */
 let mlbContainer = document.querySelector("#mlb-tab-content .container-2");
 let mlbBtn = document.getElementById("mlb-spin-btn");
@@ -84,7 +134,6 @@ function MLBSpin() {
   
   mlbContainer.addEventListener("transitionend", function() {
     selectedTeam.classList.add("selected");
-
   });
 }
 
@@ -126,3 +175,31 @@ tabItems.forEach(item => item.addEventListener('click', selectItem));
 document.getElementById("reset-btn").addEventListener("click", function() {
   location.reload();
 });
+
+/* Prevent Submit Button from refreshing the page */
+document.getElementById("my-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Perform any additional actions or validation here
+
+  // Optional: You can make an asynchronous request to submit the form data
+  // using JavaScript's Fetch API or XMLHttpRequest.
+
+  // Example using Fetch API:
+  /*
+  fetch("/submit-url", {
+    method: "POST",
+    body: new FormData(event.target)
+  })
+  .then(response => {
+    // Handle the response
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+  */
+});
+
+
+
+
