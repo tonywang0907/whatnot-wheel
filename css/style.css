@@ -34,9 +34,9 @@ body {
 }
 
 #nba-logo {
-  width: 40px;
-  height: 80px;
-  border-radius: 10px;
+  width: 35px;
+  height: 70px;
+  border-radius: 8px;
 }
 
 #nfl-logo {
@@ -79,7 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 20px auto;
+  margin: 0px auto;
 }
 
 /* Sports Tab */
@@ -700,7 +700,7 @@ body {
 
 /* Reset Button */
 #wheel-btns #reset-btn {
-  font-weight: bold;
+  font-weight: 500;
   color: #000;
   background: #fff;
   height: auto;
@@ -711,6 +711,11 @@ body {
   cursor: pointer;
   margin-left: 40px;
 }
+
+#wheel-btns #reset-btn:active {
+  font-weight: bold;
+}
+
 
 /* Submit Button for the URL */
 form {
@@ -727,7 +732,7 @@ form {
 }
 
 #wheel-btns button[type="submit"] {
-  font-weight: bold;
+  font-weight: 500;
   padding: 5px 10px;
   background: #fff;
   border: 5px solid #000;
@@ -737,6 +742,9 @@ form {
   cursor: pointer;
 }
 
+#wheel-btns button[type="submit"]:active {
+  font-weight: 900;
+}
 
 
 
