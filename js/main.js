@@ -3,6 +3,7 @@ let nbaContainer = document.querySelector("#nba-tab-content .container-2");
 let nbaBtn = document.getElementById("nba-spin-btn");
 let nbaTeamsArray = Array.from(document.querySelectorAll("#wheel .nba-team"));
 let nbaNumSelected = 0;
+let nbaCurrTeamIdx = 0;
 
 const nbaTeamsLength = nbaTeamsArray.length;
 nbaTeamsArray[nbaTeamsArray.length] = nbaTeamsArray[0];
@@ -20,10 +21,10 @@ function NBASpin() {
   nbaTeamRepCheck(rotateAmount);
 
   let idx = rotateAmount.value % nbaTeamsLength;
-  console.log(idx);
+  // console.log(idx);
 
   let selectedTeam = nbaTeamsArray[nbaTeamsLength - idx];
-  console.log("team:", selectedTeam.textContent);
+  // console.log("team:", selectedTeam.textContent);
   nbaTeamsArray[nbaTeamsLength - idx] = "selected";
   nbaNumSelected += 1;
 
@@ -31,10 +32,14 @@ function NBASpin() {
   rotation = rotationIncrement * rotateAmount.value; 
   nbaContainer.style.transform = "rotate(" + rotation + "deg)";
 
-  
   nbaContainer.addEventListener("transitionend", function() {
     selectedTeam.classList.add("selected");
+    let currTeamInput = document.querySelector("#nba-team" + nbaCurrTeamIdx + " input");
+    setTimeout(function() {
+      currTeamInput.value = " " + selectedTeam.textContent;
+    }, 1000);
   });
+  nbaCurrTeamIdx += 1;
 }
 
 function nbaTeamRepCheck(rotateAmount) {
@@ -53,6 +58,7 @@ let nflContainer = document.querySelector("#nfl-tab-content .container-2");
 let nflBtn = document.getElementById("nfl-spin-btn");
 let nflTeamsArray = Array.from(document.querySelectorAll("#wheel .nfl-team"));
 let nflNumSelected = 0;
+let nflCurrTeamIdx = 0;
 
 const nflTeamsLength = nflTeamsArray.length;
 nflTeamsArray[nflTeamsArray.length] = nflTeamsArray[0];
@@ -84,7 +90,12 @@ function NFLSpin() {
   
   nflContainer.addEventListener("transitionend", function() {
     selectedTeam.classList.add("selected");
+    let currTeamInput = document.querySelector("#nfl-team" + nflCurrTeamIdx + " input");
+    setTimeout(function() {
+      currTeamInput.value = " " + selectedTeam.textContent;
+    }, 1000);
   });
+  nflCurrTeamIdx += 1;
 }
 
 function nflTeamRepCheck(rotateAmount) {
@@ -103,6 +114,7 @@ let mlbContainer = document.querySelector("#mlb-tab-content .container-2");
 let mlbBtn = document.getElementById("mlb-spin-btn");
 let mlbTeamsArray = Array.from(document.querySelectorAll("#wheel .mlb-team"));
 let mlbNumSelected = 0;
+let mlbCurrTeamIdx = 0;
 
 const mlbTeamsLength = mlbTeamsArray.length;
 mlbTeamsArray[mlbTeamsArray.length] = mlbTeamsArray[0];
@@ -134,7 +146,12 @@ function MLBSpin() {
   
   mlbContainer.addEventListener("transitionend", function() {
     selectedTeam.classList.add("selected");
+    let currTeamInput = document.querySelector("#mlb-team" + mlbCurrTeamIdx + " input");
+    setTimeout(function() {
+      currTeamInput.value = " " + selectedTeam.textContent;
+    }, 1000);
   });
+  mlbCurrTeamIdx += 1;
 }
 
 function mlbTeamRepCheck(rotateAmount) {
@@ -199,6 +216,9 @@ document.getElementById("my-form").addEventListener("submit", function(event) {
   });
   */
 });
+
+/* Export Data to Google Sheets */
+
 
 
 
