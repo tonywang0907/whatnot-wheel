@@ -25,6 +25,10 @@ body {
 }
 
 /* Utilities */
+.hide {
+  display: none;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -699,7 +703,7 @@ body {
 }
 
 /* Reset Button */
-#wheel-btns #reset-btn {
+#wheel-btns #reset-btn, #wheel-btns #export-btn {
   font-weight: 500;
   color: #000;
   background: #fff;
@@ -709,13 +713,12 @@ body {
   border: 5px solid #000;
   border-radius: 50px;
   cursor: pointer;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
-#wheel-btns #reset-btn:active {
+#wheel-btns #reset-btn:active, #wheel-btns #export-btn:active {
   font-weight: bold;
 }
-
 
 /* Submit Button for the URL */
 form {

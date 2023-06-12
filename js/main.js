@@ -43,7 +43,7 @@ function NBASpin() {
 }
 
 function nbaTeamRepCheck(rotateAmount) {
-  rotateAmount.value = Math.floor(Math.random() * 600);
+  rotateAmount.value = Math.floor(Math.random() * 300);
   let idx = rotateAmount.value % nbaTeamsLength;
 
   let selectedTeam = nbaTeamsArray[nbaTeamsLength - idx];
@@ -217,9 +217,73 @@ document.getElementById("my-form").addEventListener("submit", function(event) {
   */
 });
 
-/* Export Data to Google Sheets */
+/* Print Break Sheet */
+document.getElementById("export-btn").addEventListener("click", function() {
+  console.log("Export button clicked");
 
+  // Your data preparation code here
+  const dataRows = [];
 
+  // Retrieve the left table element
+  const activeTab = document.querySelector(".show");
+  const leftTable = activeTab.querySelector("#left-table");
+  const leftRows = leftTable.getElementsByTagName("tr");
+  
+  // Loop through each row of the left table (skipping the first row)
+  for (let i = 1; i < leftRows.length; i++) {
+    const row = leftRows[i];
 
+    // Retrieve the username and team values from the input fields
+    const username = row.cells[0].querySelector("input").value;
+    const team = row.cells[1].querySelector("input").value;
 
+    // Add the username and team values to the dataRows array
+    dataRows.push([username, team]);
+  }
 
+  // Retrieve the right table element
+  const rightTable = activeTab.querySelector("#right-table");
+  const rightRows = rightTable.getElementsByTagName("tr");
+
+  // Loop through each row of the right table (skipping the first row)
+  for (let i = 1; i < rightRows.length; i++) {
+    const row = rightRows[i];
+
+    // Retrieve the username and team values from the input fields
+    const username = row.cells[0].querySelector("input").value;
+    const team = row.cells[1].querySelector("input").value;
+
+    // Add the username and team values to the dataRows array
+    dataRows.push([username, team]);
+  }
+
+  // Create a new workbook and worksheet
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet("Sheet1");
+
+  // Add the title row
+  worksheet.addRow(["Username", "Team"]);
+
+  // Add the data rows
+  dataRows.forEach((row) => {
+    worksheet.addRow(row);
+  });
+
+  // Generate the Excel file
+  workbook.xlsx.writeBuffer()
+    .then(function(buffer) {
+      const blob = new Blob([buffer], { type: "application/octet-stream" });
+      const fileName = "data.xlsx";
+
+      // Create a download link and trigger the download
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+
+      console.log("Export completed");
+    })
+    .catch(function(error) {
+      console.error("Export error:", error);
+    });
+});
