@@ -4,22 +4,31 @@ let nbaBtn = document.getElementById("nba-spin-btn");
 let nbaTeamsArray = Array.from(document.querySelectorAll("#wheel .nba-team"));
 let nbaNumSelected = 0;
 let nbaCurrTeamIdx = 0;
+let nbaUserIdx = 1;
 
 const nbaTeamsLength = nbaTeamsArray.length;
 nbaTeamsArray[nbaTeamsArray.length] = nbaTeamsArray[0];
 
-function getAuction() {
+
+function getUsername(idx) {
   fetch('/backend')
       .then(function (response) {
           return response.json(response);
       }).then(function (text) {
           console.log('GET response:');
           console.log(text); 
+          setUsername(idx, text);
       });
 }
 
+function setUsername(idx, username) {
+  let currUserInput = document.querySelector("#nba-user" + idx + " input");
+  currUserInput.value = " " + username;
+}
+
 function NBASpin() {
-  getAuction();
+  getUsername(nbaUserIdx);
+  nbaUserIdx += 1;
   let rotation = 0;
 
   if (nbaNumSelected === nbaTeamsLength) {
