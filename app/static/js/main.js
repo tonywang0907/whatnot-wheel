@@ -9,13 +9,26 @@ let nbaUserIdx = 1;
 const nbaTeamsLength = nbaTeamsArray.length;
 nbaTeamsArray[nbaTeamsArray.length] = nbaTeamsArray[0];
 
+let streamURL = null;
 
 function getUsername(idx) {
-  fetch('/backend')
+  fetch('/backend', {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(streamURL),
+  })
       .then(function (response) {
           return response.json(response);
       }).then(function (text) {
-          console.log('GET response:');
+          console.log('POST response:');
           console.log(text); 
           setUsername(idx, text);
       });
@@ -27,7 +40,10 @@ function setUsername(idx, username) {
 }
 
 function NBASpin() {
-  getUsername(nbaUserIdx);
+  if (streamURL != null) {
+    getUsername(nbaUserIdx);
+  }
+
   nbaUserIdx += 1;
   let rotation = 0;
 
@@ -216,25 +232,8 @@ document.getElementById("reset-btn").addEventListener("click", function() {
 /* Prevent Submit Button from refreshing the page */
 document.getElementById("my-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent the default form submission behavior
-
-  // Perform any additional actions or validation here
-
-  // Optional: You can make an asynchronous request to submit the form data
-  // using JavaScript's Fetch API or XMLHttpRequest.
-
-  // Example using Fetch API:
-  /*
-  fetch("/submit-url", {
-    method: "POST",
-    body: new FormData(event.target)
-  })
-  .then(response => {
-    // Handle the response
-  })
-  .catch(error => {
-    // Handle any errors
-  });
-  */
+  const textField = document.getElementById("my-textfield");
+  streamURL = textField.value;
 });
 
 /* Print Break Sheet */
