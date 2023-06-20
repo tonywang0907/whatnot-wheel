@@ -68,7 +68,8 @@ def get_auction_username(link):
             print("No match found.")
 
         return jsonify(username)
-    except:
+    except Exception as e:
+        print(e)
         return jsonify("Something is wrong with the link...")
 
 # main driver function
