@@ -5,18 +5,10 @@ from flask import Flask, jsonify, request, render_template
 from selenium import webdriver
 import time
 import re
-import os
  
 # Flask constructor takes the name of
 # current module (__name__) as argument.
 app = Flask(__name__)
-
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
  
 # The route() function of the Flask class is a decorator,
 # which tells the application which URL should call
