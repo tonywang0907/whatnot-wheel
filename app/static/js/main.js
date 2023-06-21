@@ -1,17 +1,6 @@
-/* NBA Wheel Spin */
-let nbaContainer = document.querySelector("#nba-tab-content .container-2");
-let nbaBtn = document.getElementById("nba-spin-btn");
-let nbaTeamsArray = Array.from(document.querySelectorAll("#wheel .nba-team"));
-let nbaNumSelected = 0;
-let nbaCurrTeamIdx = 0;
-let nbaUserIdx = 1;
-
-const nbaTeamsLength = nbaTeamsArray.length;
-nbaTeamsArray[nbaTeamsArray.length] = nbaTeamsArray[0];
-
 let streamURL = null;
 
-function getUsername(idx) {
+function getUsername(idx, sports) {
   fetch('/backend', {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
@@ -28,177 +17,114 @@ function getUsername(idx) {
       .then(function (response) {
           return response.json(response);
       }).then(function (text) {
-          console.log('POST response:');
-          console.log(text); 
-          setUsername(idx, text);
+          // console.log('POST response:');
+          // console.log(text); 
+          setUsername(idx, text, sports);
       });
 }
 
-function setUsername(idx, username) {
-  let currUserInput = document.querySelector("#nba-user" + idx + " input");
+function setUsername(idx, username, sports) {
+  let currUserInput = document.querySelector("#" + sports + "-user" + idx + " input");
   currUserInput.value = " " + username;
 }
 
-function NBASpin() {
+function spin(data) {
   if (streamURL != null) {
-    getUsername(nbaUserIdx);
+    getUsername(data.userIdx, data.sports);
   }
 
-  nbaUserIdx += 1;
+  data.userIdx += 1;
   let rotation = 0;
 
-  if (nbaNumSelected === nbaTeamsLength) {
-    document.getElementById("nba-spin-btn").disabled = false;
+  if (data.numSelected === data.teamsLength) { 
+    data.btn.disabled = false;
     return;
   }
 
-  let rotateAmount = { value: 0 }; // Create an object to hold the rotateAmount value
+  let rotateAmount = { value: 0 };
 
-  nbaTeamRepCheck(rotateAmount);
+  teamRepCheck(rotateAmount, data.teamsArray, data.teamsLength);
 
-  let idx = rotateAmount.value % nbaTeamsLength;
-  // console.log(idx);
+  let idx = rotateAmount.value % data.teamsLength;
+  let selectedTeam = data.teamsArray[data.teamsLength - idx];
+  data.teamsArray[data.teamsLength - idx] = "selected";
+  data.numSelected += 1;
 
-  let selectedTeam = nbaTeamsArray[nbaTeamsLength - idx];
-  // console.log("team:", selectedTeam.textContent);
-  nbaTeamsArray[nbaTeamsLength - idx] = "selected";
-  nbaNumSelected += 1;
+  let rotationIncrement = 360 / data.teamsLength;
+  rotation = rotationIncrement * rotateAmount.value;
+  data.container.style.transform = "rotate(" + rotation + "deg)";
 
-  let rotationIncrement = 360 / nbaTeamsLength; 
-  rotation = rotationIncrement * rotateAmount.value; 
-  nbaContainer.style.transform = "rotate(" + rotation + "deg)";
-
-  nbaContainer.addEventListener("transitionend", function() {
+  data.container.addEventListener("transitionend", function () {
     selectedTeam.classList.add("selected");
-    let currTeamInput = document.querySelector("#nba-team" + nbaCurrTeamIdx + " input");
-    setTimeout(function() {
+    let currTeamInput = document.querySelector("#" + data.sports + "-team" + data.currTeamIdx + " input");
+    setTimeout(function () {
       currTeamInput.value = " " + selectedTeam.textContent;
     }, 1000);
   });
-  nbaCurrTeamIdx += 1;
+  data.currTeamIdx += 1;
 }
 
-function nbaTeamRepCheck(rotateAmount) {
-  rotateAmount.value = Math.floor(Math.random() * 300);
-  let idx = rotateAmount.value % nbaTeamsLength;
-
-  let selectedTeam = nbaTeamsArray[nbaTeamsLength - idx];
-
+function teamRepCheck(rotateAmount, teamsArray, teamsLength) {
+  rotateAmount.value = Math.floor(Math.random() * 600);
+  let idx = rotateAmount.value % teamsLength;
+  let selectedTeam = teamsArray[teamsLength - idx];
   if (selectedTeam === "selected") {
-    nbaTeamRepCheck(rotateAmount);
+    teamRepCheck(rotateAmount, teamsArray, teamsLength);
   }
+}
+
+/* NBA Wheel Spin */
+const nbaData = {
+  sports: "nba",
+  container: document.querySelector("#nba-tab-content .container-2"),
+  btn: document.getElementById("nba-spin-btn"),
+  teamsArray: Array.from(document.querySelectorAll("#wheel .nba-team")),
+  numSelected: 0,
+  currTeamIdx: 0,
+  teamsLength: 0,
+  userIdx: 1
+};
+nbaData.teamsLength = nbaData.teamsArray.length;
+nbaData.teamsArray[nbaData.teamsArray.length] = nbaData.teamsArray[0];
+
+function NBASpin() {
+  spin(nbaData);
 }
 
 /* NFL Wheel Spin */
-let nflContainer = document.querySelector("#nfl-tab-content .container-2");
-let nflBtn = document.getElementById("nfl-spin-btn");
-let nflTeamsArray = Array.from(document.querySelectorAll("#wheel .nfl-team"));
-let nflNumSelected = 0;
-let nflCurrTeamIdx = 0;
-
-const nflTeamsLength = nflTeamsArray.length;
-nflTeamsArray[nflTeamsArray.length] = nflTeamsArray[0];
+const nflData = {
+  sports: "nfl",
+  container: document.querySelector("#nfl-tab-content .container-2"),
+  btn: document.getElementById("nfl-spin-btn"),
+  teamsArray: Array.from(document.querySelectorAll("#wheel .nfl-team")),
+  numSelected: 0,
+  currTeamIdx: 0,
+  teamsLength: 0,
+  userIdx: 1
+}
+nflData.teamsLength = nflData.teamsArray.length;
+nflData.teamsArray[nflData.teamsArray.length] = nflData.teamsArray[0];
 
 function NFLSpin() {
-  let rotation = 0;
-
-  if (nflNumSelected === nflTeamsLength) {
-    document.getElementById("nfl-spin-btn").disabled = false;
-    return;
-  }
-
-  let rotateAmount = { value: 0 }; 
-
-  nflTeamRepCheck(rotateAmount);
-
-  let idx = rotateAmount.value % nflTeamsLength;
-  // console.log(idx);
-
-  let selectedTeam = nflTeamsArray[nflTeamsLength - idx];
-  // console.log("team:", selectedTeam.textContent);
-  nflTeamsArray[nflTeamsLength - idx] = "selected";
-  nflNumSelected += 1;
-
-  let rotationIncrement = 360 / nflTeamsLength; 
-  rotation = rotationIncrement * rotateAmount.value; 
-  nflContainer.style.transform = "rotate(" + rotation + "deg)";
-
-  
-  nflContainer.addEventListener("transitionend", function() {
-    selectedTeam.classList.add("selected");
-    let currTeamInput = document.querySelector("#nfl-team" + nflCurrTeamIdx + " input");
-    setTimeout(function() {
-      currTeamInput.value = " " + selectedTeam.textContent;
-    }, 1000);
-  });
-  nflCurrTeamIdx += 1;
-}
-
-function nflTeamRepCheck(rotateAmount) {
-  rotateAmount.value = Math.floor(Math.random() * 600);
-  let idx = rotateAmount.value % nflTeamsLength;
-
-  let selectedTeam = nflTeamsArray[nflTeamsLength - idx];
-
-  if (selectedTeam === "selected") {
-    nflTeamRepCheck(rotateAmount);
-  }
+  spin(nflData);
 }
 
 /* MLB Wheel Spin */
-let mlbContainer = document.querySelector("#mlb-tab-content .container-2");
-let mlbBtn = document.getElementById("mlb-spin-btn");
-let mlbTeamsArray = Array.from(document.querySelectorAll("#wheel .mlb-team"));
-let mlbNumSelected = 0;
-let mlbCurrTeamIdx = 0;
-
-const mlbTeamsLength = mlbTeamsArray.length;
-mlbTeamsArray[mlbTeamsArray.length] = mlbTeamsArray[0];
+const mlbData = {
+  sports: "mlb",
+  container: document.querySelector("#lmlb-tab-content .container-2"),
+  btn: document.getElementById("mlb-spin-btn"),
+  teamsArray: Array.from(document.querySelectorAll("#wheel .mlb-team")),
+  numSelected: 0,
+  currTeamIdx: 0,
+  teamsLength: 0,
+  userIdx: 1
+}
+mlbData.teamsLength = mlbData.teamsArray.length;
+mlbData.teamsArray[mlbData.teamsArray.length] = mlbData.teamsArray[0];
 
 function MLBSpin() {
-  let rotation = 0;
-
-  if (mlbNumSelected === mlbTeamsLength) {
-    document.getElementById("mlb-spin-btn").disabled = false;
-    return;
-  }
-
-  let rotateAmount = { value: 0 }; 
-
-  mlbTeamRepCheck(rotateAmount);
-
-  let idx = rotateAmount.value % mlbTeamsLength;
-  // console.log(idx);
-
-  let selectedTeam = mlbTeamsArray[mlbTeamsLength - idx];
-  // console.log("team:", selectedTeam.textContent);
-  mlbTeamsArray[mlbTeamsLength - idx] = "selected";
-  mlbNumSelected += 1;
-
-  let rotationIncrement = 360 / mlbTeamsLength; 
-  rotation = rotationIncrement * rotateAmount.value; 
-  mlbContainer.style.transform = "rotate(" + rotation + "deg)";
-
-  
-  mlbContainer.addEventListener("transitionend", function() {
-    selectedTeam.classList.add("selected");
-    let currTeamInput = document.querySelector("#mlb-team" + mlbCurrTeamIdx + " input");
-    setTimeout(function() {
-      currTeamInput.value = " " + selectedTeam.textContent;
-    }, 1000);
-  });
-  mlbCurrTeamIdx += 1;
-}
-
-function mlbTeamRepCheck(rotateAmount) {
-  rotateAmount.value = Math.floor(Math.random() * 600);
-  let idx = rotateAmount.value % mlbTeamsLength;
-
-  let selectedTeam = mlbTeamsArray[mlbTeamsLength - idx];
-
-  if (selectedTeam === "selected") {
-    mlbTeamRepCheck(rotateAmount);
-  }
+  spin(mlbData);
 }
 
 /* Selecting Tab */ 
@@ -223,7 +149,6 @@ function removeShow() {
 
 tabItems.forEach(item => item.addEventListener('click', selectItem));
 
-
 /* Wheel Reset Button */
 document.getElementById("reset-btn").addEventListener("click", function() {
   location.reload();
@@ -236,10 +161,9 @@ document.getElementById("my-form").addEventListener("submit", function(event) {
   streamURL = textField.value;
 });
 
-/* Print Break Sheet */
+/* Export Break Sheet */
 document.getElementById("export-btn").addEventListener("click", function() {
-  console.log("Export button clicked");
-
+  // console.log("Export button clicked");
   // Your data preparation code here
   const dataRows = [];
 
@@ -299,10 +223,9 @@ document.getElementById("export-btn").addEventListener("click", function() {
       link.href = window.URL.createObjectURL(blob);
       link.download = fileName;
       link.click();
-
-      console.log("Export completed");
+      // console.log("Export completed");
     })
     .catch(function(error) {
-      console.error("Export error:", error);
+      // console.error("Export error:", error);
     });
 });

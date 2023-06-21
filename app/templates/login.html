@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/login.css">
+
+  <title>Login Page</title>
+</head>
+<body>
+  <div class="container">
+    <div class="left-container">
+      <form method="POST">
+        <h1>Log in</h1>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="username" id="username" name="username" placeholder="Enter username"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password"/>
+        </div>
+        <br />
+        <button type="submit">Login</button>   
+      </form>
+
+      <div class="subscription">
+        <h5>Join our community and become a member today to unlock exclusive perks and benefits!</h5>
+        <a href="#"><button type="button">Join Now</button></a>
+      </div>
+        
+    </div>
+
+    <div class="right-container">
+      <!-- Sports Options -->
+      <section id="sports-options">
+        <div class="container-1">
+          <div id="nba-tab" class="tab-item tab-border">
+            <img src="../static/img/nba-logo.png" id="nba-logo" alt="nba-logo">
+          </div>
+          <div id="nfl-tab" class="tab-item">
+            <img src="../static/img/nfl-logo.svg" id="nfl-logo" alt="nfl-logo">
+          </div>
+          <div id="mlb-tab" class="tab-item">
+            <img src="../static/img/mlb-logo.svg" id="mlb-logo" alt="mlb-logo">
+          </div>
+        </div>
+      </section>
+
+      <!-- Sports Tab -->
+      <section id="sports-tab">
+        <!-- NBA Tab -->
+        <section id="nba-tab-content" class="tab-content-item show">
+          <!-- Wheel -->
+          <div id="wheel">
+            <div class="container-2">
+              <div class="nba-team bos"><h3>Celtics</h3></div>
+              <div class="nba-team bkn"><h3>Nets</h3></div>
+              <div class="nba-team nyk"><h3>Knicks</h3></div>
+              <div class="nba-team phi"><h3>76ers</h3></div>
+              <div class="nba-team tor"><h3>Raptors</h3></div>
+          
+              <div class="nba-team gsw"><h3>Warriors</h3></div>
+              <div class="nba-team lac"><h3>Clippers</h3></div>
+              <div class="nba-team lal"><h3>Lakers</h3></div>
+              <div class="nba-team phx"><h3>Suns</h3></div>
+              <div class="nba-team sac"><h3>Kings</h3></div>
+          
+              <div class="nba-team chi"><h3>Bulls</h3></div>
+              <div class="nba-team cle"><h3>Cavaliers</h3></div>
+              <div class="nba-team det"><h3>Pistons</h3></div>
+              <div class="nba-team ind"><h3>Pacers</h3></div>
+              <div class="nba-team mil"><h3>Bucks</h3></div>
+          
+              <div class="nba-team atl"><h3>Hawks</h3></div>
+              <div class="nba-team cha"><h3>Hornets</h3></div>
+              <div class="nba-team mia"><h3>Heat</h3></div>
+              <div class="nba-team orl"><h3>Magic</h3></div>
+              <div class="nba-team was"><h3>Wizards</h3></div>
+          
+              <div class="nba-team den"><h3>Nuggets</h3></div>
+              <div class="nba-team min"><h3>Timberwolves</h3></div>
+              <div class="nba-team okc"><h3>Thunder</h3></div>
+              <div class="nba-team por"><h3>Trail Blazers</h3></div>
+              <div class="nba-team uta"><h3>Jazz</h3></div>
+          
+              <div class="nba-team dal"><h3>Mavericks</h3></div>
+              <div class="nba-team hou"><h3>Rockets</h3></div>
+              <div class="nba-team mem"><h3>Grizzlies</h3></div>
+              <div class="nba-team nop"><h3>Pelicans</h3></div>
+              <div class="nba-team sas"><h3>Spurs</h3></div>
+            </div>
+            <button id="nba-spin-btn" onclick="NBASpin()">SPIN</button>
+          </div>
+        </section>
+
+        <!-- NFL Tab -->
+        <section id="nfl-tab-content" class="tab-content-item">
+          <!-- Wheel -->
+          <div id="wheel"> 
+            <div class="container-2">
+              <div class="nfl-team bal"><h3>Ravens</h3></div>
+              <div class="nfl-team cin"><h3>Bengals</h3></div>
+              <div class="nfl-team cle"><h3>Browns</h3></div>
+              <div class="nfl-team pit"><h3>Steelers</h3></div>
+
+              <div class="nfl-team buf"><h3>Bills</h3></div>
+              <div class="nfl-team mia"><h3>Dolphins</h3></div>
+              <div class="nfl-team ne"><h3>Patriots</h3></div>
+              <div class="nfl-team nyj"><h3>Jets</h3></div>
+
+              <div class="nfl-team hou"><h3>Texans</h3></div>
+              <div class="nfl-team ind"><h3>Colts</h3></div>
+              <div class="nfl-team jax"><h3>Jaguars</h3></div>
+              <div class="nfl-team ten"><h3>Titans</h3></div>
+
+              <div class="nfl-team den"><h3>Broncos</h3></div>
+              <div class="nfl-team kc"><h3>Chiefs</h3></div>
+              <div class="nfl-team lv"><h3>Raiders</h3></div>
+              <div class="nfl-team lac"><h3>Chargers</h3></div>
+
+              <div class="nfl-team chi"><h3>Bears</h3></div>
+              <div class="nfl-team det"><h3>Lions</h3></div>
+              <div class="nfl-team gb"><h3>Packers</h3></div>
+              <div class="nfl-team min"><h3>Vikings</h3></div>
+
+              <div class="nfl-team dal"><h3>Cowboys</h3></div>
+              <div class="nfl-team nyg"><h3>Giants</h3></div>
+              <div class="nfl-team phi"><h3>Eagles</h3></div>
+              <div class="nfl-team was"><h3>Commanders</h3></div>
+
+              <div class="nfl-team atl"><h3>Falcons</h3></div>
+              <div class="nfl-team car"><h3>Panthers</h3></div>
+              <div class="nfl-team no"><h3>Saints</h3></div>
+              <div class="nfl-team tb"><h3>Buccaneers</h3></div>
+
+              <div class="nfl-team ari"><h3>Cardinals</h3></div>
+              <div class="nfl-team lar"><h3>Rams</h3></div>
+              <div class="nfl-team sf"><h3>49ers</h3></div>
+              <div class="nfl-team sea"><h3>Seahawks</h3></div>
+            </div>
+            <button id="nfl-spin-btn" onclick="NFLSpin()">SPIN</button>
+          </div>
+        </section>
+        <!-- MLB Tab -->
+        <section id="mlb-tab-content" class="tab-content-item">
+          <!-- Wheel -->
+          <div id="wheel">
+            <div class="container-2">
+              <div class="mlb-team cws"><h3>White Sox</h3></div>
+              <div class="mlb-team cle"><h3>Guardians</h3></div>
+              <div class="mlb-team det"><h3>Tigers</h3></div>
+              <div class="mlb-team kc"><h3>Royals</h3></div>
+              <div class="mlb-team min"><h3>Twins</h3></div>
+          
+              <div class="mlb-team chc"><h3>Cubs</h3></div>
+              <div class="mlb-team cin"><h3>Reds</h3></div>
+              <div class="mlb-team mil"><h3>Brewers</h3></div>
+              <div class="mlb-team pit"><h3>Pirates</h3></div>
+              <div class="mlb-team stl"><h3>Cardinals</h3></div>
+          
+              <div class="mlb-team bal"><h3>Orioles</h3></div>
+              <div class="mlb-team bos"><h3>Red Sox</h3></div>
+              <div class="mlb-team nyy"><h3>Yankees</h3></div>
+              <div class="mlb-team tb"><h3>Rays</h3></div>
+              <div class="mlb-team tor"><h3>Jays</h3></div>
+          
+              <div class="mlb-team atl"><h3>Braves</h3></div>
+              <div class="mlb-team mia"><h3>Marlins</h3></div>
+              <div class="mlb-team nym"><h3>Mets</h3></div>
+              <div class="mlb-team phi"><h3>Phillies</h3></div>
+              <div class="mlb-team wsh"><h3>Nationals</h3></div>
+          
+              <div class="mlb-team hou"><h3>Astros</h3></div>
+              <div class="mlb-team laa"><h3>Angels</h3></div>
+              <div class="mlb-team oak"><h3>Athletics</h3></div>
+              <div class="mlb-team sea"><h3>Mariners</h3></div>
+              <div class="mlb-team tex"><h3>Rangers</h3></div>
+          
+              <div class="mlb-team ari"><h3>Diamondbacks</h3></div>
+              <div class="mlb-team col"><h3>Rockies</h3></div>
+              <div class="mlb-team lad"><h3>Dodgers</h3></div>
+              <div class="mlb-team sd"><h3>Padres</h3></div>
+              <div class="mlb-team sf"><h3>Giants</h3></div>
+            </div>
+            <button id="mlb-spin-btn" onclick="MLBSpin()">SPIN</button>
+          </div>
+        </section>
+    </div>
+  </div>
+
+  	<!-- Javascript -->
+	<script src="../static/js/main.js"></script>
+</body>
+</html>
