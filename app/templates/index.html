@@ -1,631 +1,1721 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="../static/css/style.css">
-  <script src="https://unpkg.com/exceljs/dist/exceljs.min.js"></script>
-	<title>Whatnot Break Sheet</title>
-</head>
-<body>	
+{% extends 'layout.html' %}
 
-  <!-- Title -->
-  <section id="title">
-    <h1>Sports Wheel Spin & Break Sheet</h1>
-  </section>
-
-  <!-- Sports Options -->
-  <section id="sports-options">
-    <div class="container-1">
-      <div id="nba-tab" class="tab-item tab-border">
-        <img src="../static/img/nba-logo.png" id="nba-logo" alt="nba-logo">
-      </div>
-      <div id="nfl-tab" class="tab-item">
-        <img src="../static/img/nfl-logo.svg" id="nfl-logo" alt="nfl-logo">
-      </div>
-      <div id="mlb-tab" class="tab-item">
-        <img src="../static/img/mlb-logo.svg" id="mlb-logo" alt="mlb-logo">
-      </div>
+{% block body %}
+<!-- Sports Options -->
+<section id="sports-options">
+  <div class="container-1">
+    <div id="nba-tab" class="tab-item tab-border">
+      <img src="../static/img/nba-logo.png" id="nba-logo" alt="nba-logo" />
     </div>
-  </section>
+    <div id="nfl-tab" class="tab-item">
+      <img src="../static/img/nfl-logo.svg" id="nfl-logo" alt="nfl-logo" />
+    </div>
+    <div id="mlb-tab" class="tab-item">
+      <img src="../static/img/mlb-logo.svg" id="mlb-logo" alt="mlb-logo" />
+    </div>
+  </div>
+</section>
 
-  <!-- Sports Tab -->
-  <section id="sports-tab">
-    <!-- NBA Tab -->
-    <section id="nba-tab-content" class="tab-content-item show">
-      <!-- Table -->
-      <table id="left-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="nba-user1"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team1"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user2"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team2"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user3"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team3"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user4"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team4"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user5"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team5"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user6"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team6"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user7"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team7"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user8"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team8"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user9"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team9"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user10"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team10"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user11"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team11"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user12"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team12"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user13"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team13"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user14"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team14"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user15"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team15"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Wheel -->
-      <div id="wheel">
-        <div class="container-2">
-          <div class="nba-team bos"><h3>Celtics</h3></div>
-          <div class="nba-team bkn"><h3>Nets</h3></div>
-          <div class="nba-team nyk"><h3>Knicks</h3></div>
-          <div class="nba-team phi"><h3>76ers</h3></div>
-          <div class="nba-team tor"><h3>Raptors</h3></div>
-      
-          <div class="nba-team gsw"><h3>Warriors</h3></div>
-          <div class="nba-team lac"><h3>Clippers</h3></div>
-          <div class="nba-team lal"><h3>Lakers</h3></div>
-          <div class="nba-team phx"><h3>Suns</h3></div>
-          <div class="nba-team sac"><h3>Kings</h3></div>
-      
-          <div class="nba-team chi"><h3>Bulls</h3></div>
-          <div class="nba-team cle"><h3>Cavaliers</h3></div>
-          <div class="nba-team det"><h3>Pistons</h3></div>
-          <div class="nba-team ind"><h3>Pacers</h3></div>
-          <div class="nba-team mil"><h3>Bucks</h3></div>
-      
-          <div class="nba-team atl"><h3>Hawks</h3></div>
-          <div class="nba-team cha"><h3>Hornets</h3></div>
-          <div class="nba-team mia"><h3>Heat</h3></div>
-          <div class="nba-team orl"><h3>Magic</h3></div>
-          <div class="nba-team was"><h3>Wizards</h3></div>
-      
-          <div class="nba-team den"><h3>Nuggets</h3></div>
-          <div class="nba-team min"><h3>Timberwolves</h3></div>
-          <div class="nba-team okc"><h3>Thunder</h3></div>
-          <div class="nba-team por"><h3>Trail Blazers</h3></div>
-          <div class="nba-team uta"><h3>Jazz</h3></div>
-      
-          <div class="nba-team dal"><h3>Mavericks</h3></div>
-          <div class="nba-team hou"><h3>Rockets</h3></div>
-          <div class="nba-team mem"><h3>Grizzlies</h3></div>
-          <div class="nba-team nop"><h3>Pelicans</h3></div>
-          <div class="nba-team sas"><h3>Spurs</h3></div>
-        </div>
-        <button id="nba-spin-btn" onclick="NBASpin()">SPIN</button>
+<!-- Sports Tab -->
+<section id="sports-tab">
+  <!-- NBA Tab -->
+  <section id="nba-tab-content" class="tab-content-item show">
+    <!-- Table -->
+    <table id="left-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="nba-user1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Wheel -->
+    <div id="wheel">
+      <div class="container-2">
+        <div class="nba-team bos"><h3>Celtics</h3></div>
+        <div class="nba-team bkn"><h3>Nets</h3></div>
+        <div class="nba-team nyk"><h3>Knicks</h3></div>
+        <div class="nba-team phi"><h3>76ers</h3></div>
+        <div class="nba-team tor"><h3>Raptors</h3></div>
+
+        <div class="nba-team gsw"><h3>Warriors</h3></div>
+        <div class="nba-team lac"><h3>Clippers</h3></div>
+        <div class="nba-team lal"><h3>Lakers</h3></div>
+        <div class="nba-team phx"><h3>Suns</h3></div>
+        <div class="nba-team sac"><h3>Kings</h3></div>
+
+        <div class="nba-team chi"><h3>Bulls</h3></div>
+        <div class="nba-team cle"><h3>Cavaliers</h3></div>
+        <div class="nba-team det"><h3>Pistons</h3></div>
+        <div class="nba-team ind"><h3>Pacers</h3></div>
+        <div class="nba-team mil"><h3>Bucks</h3></div>
+
+        <div class="nba-team atl"><h3>Hawks</h3></div>
+        <div class="nba-team cha"><h3>Hornets</h3></div>
+        <div class="nba-team mia"><h3>Heat</h3></div>
+        <div class="nba-team orl"><h3>Magic</h3></div>
+        <div class="nba-team was"><h3>Wizards</h3></div>
+
+        <div class="nba-team den"><h3>Nuggets</h3></div>
+        <div class="nba-team min"><h3>Timberwolves</h3></div>
+        <div class="nba-team okc"><h3>Thunder</h3></div>
+        <div class="nba-team por"><h3>Trail Blazers</h3></div>
+        <div class="nba-team uta"><h3>Jazz</h3></div>
+
+        <div class="nba-team dal"><h3>Mavericks</h3></div>
+        <div class="nba-team hou"><h3>Rockets</h3></div>
+        <div class="nba-team mem"><h3>Grizzlies</h3></div>
+        <div class="nba-team nop"><h3>Pelicans</h3></div>
+        <div class="nba-team sas"><h3>Spurs</h3></div>
       </div>
-  
-      <table id="right-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="nba-user16"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team16"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user17"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team17"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user18"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team18"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user19"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team19"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user20"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team20"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user21"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team21"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user22"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team22"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user23"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team23"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user24"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team24"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user25"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team25"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user26"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team26"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user27"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team27"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user28"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team28"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user29"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team29"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nba-user30"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nba-team30"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- NFL Tab -->
-    <section id="nfl-tab-content" class="tab-content-item">
-      <!-- Table -->
-      <table id="left-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="nfl-user1"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team1"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user2"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team2"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user3"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team3"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user4"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team4"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user5"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team5"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user6"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team6"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user7"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team7"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user8"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team8"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user9"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team9"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user10"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team10"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user11"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team11"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user12"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team12"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user13"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team13"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user14"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team14"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user15"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team15"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user16"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team16"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Wheel -->
-      <div id="wheel"> 
-        <div class="container-2">
-          <div class="nfl-team bal"><h3>Ravens</h3></div>
-          <div class="nfl-team cin"><h3>Bengals</h3></div>
-          <div class="nfl-team cle"><h3>Browns</h3></div>
-          <div class="nfl-team pit"><h3>Steelers</h3></div>
-
-          <div class="nfl-team buf"><h3>Bills</h3></div>
-          <div class="nfl-team mia"><h3>Dolphins</h3></div>
-          <div class="nfl-team ne"><h3>Patriots</h3></div>
-          <div class="nfl-team nyj"><h3>Jets</h3></div>
-
-          <div class="nfl-team hou"><h3>Texans</h3></div>
-          <div class="nfl-team ind"><h3>Colts</h3></div>
-          <div class="nfl-team jax"><h3>Jaguars</h3></div>
-          <div class="nfl-team ten"><h3>Titans</h3></div>
-
-          <div class="nfl-team den"><h3>Broncos</h3></div>
-          <div class="nfl-team kc"><h3>Chiefs</h3></div>
-          <div class="nfl-team lv"><h3>Raiders</h3></div>
-          <div class="nfl-team lac"><h3>Chargers</h3></div>
-
-          <div class="nfl-team chi"><h3>Bears</h3></div>
-          <div class="nfl-team det"><h3>Lions</h3></div>
-          <div class="nfl-team gb"><h3>Packers</h3></div>
-          <div class="nfl-team min"><h3>Vikings</h3></div>
-
-          <div class="nfl-team dal"><h3>Cowboys</h3></div>
-          <div class="nfl-team nyg"><h3>Giants</h3></div>
-          <div class="nfl-team phi"><h3>Eagles</h3></div>
-          <div class="nfl-team was"><h3>Commanders</h3></div>
-
-          <div class="nfl-team atl"><h3>Falcons</h3></div>
-          <div class="nfl-team car"><h3>Panthers</h3></div>
-          <div class="nfl-team no"><h3>Saints</h3></div>
-          <div class="nfl-team tb"><h3>Buccaneers</h3></div>
-
-          <div class="nfl-team ari"><h3>Cardinals</h3></div>
-          <div class="nfl-team lar"><h3>Rams</h3></div>
-          <div class="nfl-team sf"><h3>49ers</h3></div>
-          <div class="nfl-team sea"><h3>Seahawks</h3></div>
-        </div>
-        <button id="nfl-spin-btn" onclick="NFLSpin()">SPIN</button>
-      </div>
-  
-      <table id="right-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="nfl-user17"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team17"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user18"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team18"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user19"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team19"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user20"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team20"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user21"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team21"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user22"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team22"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user23"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team23"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user24"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team24"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user25"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team25"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user26"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team26"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user27"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team27"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user28"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team28"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user29"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team29"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user30"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team30"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user31"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team31"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="nfl-user32"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="nfl-team32"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MLB Tab -->
-    <section id="mlb-tab-content" class="tab-content-item">
-      <!-- Table -->
-      <table id="left-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="mlb-user1"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team1"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user2"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team2"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user3"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team3"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user4"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team4"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user5"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team5"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user6"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team6"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user7"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team7"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user8"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team8"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user9"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team9"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user10"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team10"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user11"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team11"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user12"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team12"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user13"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team13"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user14"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team14"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user15"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team15"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Wheel -->
-      <div id="wheel">
-        <div class="container-2">
-          <div class="mlb-team cws"><h3>White Sox</h3></div>
-          <div class="mlb-team cle"><h3>Guardians</h3></div>
-          <div class="mlb-team det"><h3>Tigers</h3></div>
-          <div class="mlb-team kc"><h3>Royals</h3></div>
-          <div class="mlb-team min"><h3>Twins</h3></div>
-      
-          <div class="mlb-team chc"><h3>Cubs</h3></div>
-          <div class="mlb-team cin"><h3>Reds</h3></div>
-          <div class="mlb-team mil"><h3>Brewers</h3></div>
-          <div class="mlb-team pit"><h3>Pirates</h3></div>
-          <div class="mlb-team stl"><h3>Cardinals</h3></div>
-      
-          <div class="mlb-team bal"><h3>Orioles</h3></div>
-          <div class="mlb-team bos"><h3>Red Sox</h3></div>
-          <div class="mlb-team nyy"><h3>Yankees</h3></div>
-          <div class="mlb-team tb"><h3>Rays</h3></div>
-          <div class="mlb-team tor"><h3>Jays</h3></div>
-      
-          <div class="mlb-team atl"><h3>Braves</h3></div>
-          <div class="mlb-team mia"><h3>Marlins</h3></div>
-          <div class="mlb-team nym"><h3>Mets</h3></div>
-          <div class="mlb-team phi"><h3>Phillies</h3></div>
-          <div class="mlb-team wsh"><h3>Nationals</h3></div>
-      
-          <div class="mlb-team hou"><h3>Astros</h3></div>
-          <div class="mlb-team laa"><h3>Angels</h3></div>
-          <div class="mlb-team oak"><h3>Athletics</h3></div>
-          <div class="mlb-team sea"><h3>Mariners</h3></div>
-          <div class="mlb-team tex"><h3>Rangers</h3></div>
-      
-          <div class="mlb-team ari"><h3>Diamondbacks</h3></div>
-          <div class="mlb-team col"><h3>Rockies</h3></div>
-          <div class="mlb-team lad"><h3>Dodgers</h3></div>
-          <div class="mlb-team sd"><h3>Padres</h3></div>
-          <div class="mlb-team sf"><h3>Giants</h3></div>
-        </div>
-        <button id="mlb-spin-btn" onclick="MLBSpin()">SPIN</button>
-      </div>
-
-      <table id="right-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="mlb-user16"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team16"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user17"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team17"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user18"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team18"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user19"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team19"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user20"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team20"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user21"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team21"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user22"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team22"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user23"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team23"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user24"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team24"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user25"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team25"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user26"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team26"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user27"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team27"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user28"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team28"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user29"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team29"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-          <tr>
-            <td id="mlb-user30"><input class="input-border" type="text" placeholder=" Enter username..."/></td>
-            <td id="mlb-team30"><input class="input-border" type="text" placeholder=" Enter team name..."/></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </section>
-
-  <!-- Buttons -->
-  <section id="wheel-btns">
-
-    <div class="container-3">
-      <form action="" id="my-form">
-        <input type="text" placeholder="Paste your stream URL here..." id="my-textfield">
-        <button type="submit">Submit</button>
-      </form>
+      <button id="nba-spin-btn" onclick="NBASpin()">SPIN</button>
     </div>
 
-    <div>
-      <button id="reset-btn">Reset Wheel</button>
-    </div>
-
-    <div class="export-btn">
-      <button id="export-btn">Export</button>
-    </div>
-
+    <table id="right-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="nba-user16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nba-user30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nba-team30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-	<!-- Javascript -->
-	<script src="../static/js/main.js"></script>
-</body>
-</html>
+  <!-- NFL Tab -->
+  <section id="nfl-tab-content" class="tab-content-item">
+    <!-- Table -->
+    <table id="left-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="nfl-user1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Wheel -->
+    <div id="wheel">
+      <div class="container-2">
+        <div class="nfl-team bal"><h3>Ravens</h3></div>
+        <div class="nfl-team cin"><h3>Bengals</h3></div>
+        <div class="nfl-team cle"><h3>Browns</h3></div>
+        <div class="nfl-team pit"><h3>Steelers</h3></div>
+
+        <div class="nfl-team buf"><h3>Bills</h3></div>
+        <div class="nfl-team mia"><h3>Dolphins</h3></div>
+        <div class="nfl-team ne"><h3>Patriots</h3></div>
+        <div class="nfl-team nyj"><h3>Jets</h3></div>
+
+        <div class="nfl-team hou"><h3>Texans</h3></div>
+        <div class="nfl-team ind"><h3>Colts</h3></div>
+        <div class="nfl-team jax"><h3>Jaguars</h3></div>
+        <div class="nfl-team ten"><h3>Titans</h3></div>
+
+        <div class="nfl-team den"><h3>Broncos</h3></div>
+        <div class="nfl-team kc"><h3>Chiefs</h3></div>
+        <div class="nfl-team lv"><h3>Raiders</h3></div>
+        <div class="nfl-team lac"><h3>Chargers</h3></div>
+
+        <div class="nfl-team chi"><h3>Bears</h3></div>
+        <div class="nfl-team det"><h3>Lions</h3></div>
+        <div class="nfl-team gb"><h3>Packers</h3></div>
+        <div class="nfl-team min"><h3>Vikings</h3></div>
+
+        <div class="nfl-team dal"><h3>Cowboys</h3></div>
+        <div class="nfl-team nyg"><h3>Giants</h3></div>
+        <div class="nfl-team phi"><h3>Eagles</h3></div>
+        <div class="nfl-team was"><h3>Commanders</h3></div>
+
+        <div class="nfl-team atl"><h3>Falcons</h3></div>
+        <div class="nfl-team car"><h3>Panthers</h3></div>
+        <div class="nfl-team no"><h3>Saints</h3></div>
+        <div class="nfl-team tb"><h3>Buccaneers</h3></div>
+
+        <div class="nfl-team ari"><h3>Cardinals</h3></div>
+        <div class="nfl-team lar"><h3>Rams</h3></div>
+        <div class="nfl-team sf"><h3>49ers</h3></div>
+        <div class="nfl-team sea"><h3>Seahawks</h3></div>
+      </div>
+      <button id="nfl-spin-btn" onclick="NFLSpin()">SPIN</button>
+    </div>
+
+    <table id="right-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="nfl-user17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user31">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team31">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="nfl-user32">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="nfl-team32">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- MLB Tab -->
+  <section id="mlb-tab-content" class="tab-content-item">
+    <!-- Table -->
+    <table id="left-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="mlb-user1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team1">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team2">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team3">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team4">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team5">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team6">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team7">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team8">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team9">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team10">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team11">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team12">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team13">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team14">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team15">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Wheel -->
+    <div id="wheel">
+      <div class="container-2">
+        <div class="mlb-team cws"><h3>White Sox</h3></div>
+        <div class="mlb-team cle"><h3>Guardians</h3></div>
+        <div class="mlb-team det"><h3>Tigers</h3></div>
+        <div class="mlb-team kc"><h3>Royals</h3></div>
+        <div class="mlb-team min"><h3>Twins</h3></div>
+
+        <div class="mlb-team chc"><h3>Cubs</h3></div>
+        <div class="mlb-team cin"><h3>Reds</h3></div>
+        <div class="mlb-team mil"><h3>Brewers</h3></div>
+        <div class="mlb-team pit"><h3>Pirates</h3></div>
+        <div class="mlb-team stl"><h3>Cardinals</h3></div>
+
+        <div class="mlb-team bal"><h3>Orioles</h3></div>
+        <div class="mlb-team bos"><h3>Red Sox</h3></div>
+        <div class="mlb-team nyy"><h3>Yankees</h3></div>
+        <div class="mlb-team tb"><h3>Rays</h3></div>
+        <div class="mlb-team tor"><h3>Jays</h3></div>
+
+        <div class="mlb-team atl"><h3>Braves</h3></div>
+        <div class="mlb-team mia"><h3>Marlins</h3></div>
+        <div class="mlb-team nym"><h3>Mets</h3></div>
+        <div class="mlb-team phi"><h3>Phillies</h3></div>
+        <div class="mlb-team wsh"><h3>Nationals</h3></div>
+
+        <div class="mlb-team hou"><h3>Astros</h3></div>
+        <div class="mlb-team laa"><h3>Angels</h3></div>
+        <div class="mlb-team oak"><h3>Athletics</h3></div>
+        <div class="mlb-team sea"><h3>Mariners</h3></div>
+        <div class="mlb-team tex"><h3>Rangers</h3></div>
+
+        <div class="mlb-team ari"><h3>Diamondbacks</h3></div>
+        <div class="mlb-team col"><h3>Rockies</h3></div>
+        <div class="mlb-team lad"><h3>Dodgers</h3></div>
+        <div class="mlb-team sd"><h3>Padres</h3></div>
+        <div class="mlb-team sf"><h3>Giants</h3></div>
+      </div>
+      <button id="mlb-spin-btn" onclick="MLBSpin()">SPIN</button>
+    </div>
+
+    <table id="right-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="mlb-user16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team16">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team17">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team18">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team19">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team20">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team21">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team22">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team23">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team24">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team25">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team26">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team27">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team28">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team29">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td id="mlb-user30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter username..."
+            />
+          </td>
+          <td id="mlb-team30">
+            <input
+              class="input-border"
+              type="text"
+              placeholder=" Enter team name..."
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<!-- Buttons -->
+<section id="wheel-btns">
+  <div class="container-3">
+    <form action="" id="my-form">
+      <input
+        type="text"
+        placeholder="Paste your stream URL here..."
+        id="my-textfield"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div>
+    <button id="reset-btn">Reset Wheel</button>
+  </div>
+
+  <div class="export-btn">
+    <button id="export-btn">Export</button>
+  </div>
+</section>
+{% endblock %}
+

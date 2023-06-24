@@ -1,7 +1,7 @@
 let streamURL = null;
 
 function getUsername(idx, sports) {
-  fetch('/backend', {
+  fetch("/backend", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -14,17 +14,20 @@ function getUsername(idx, sports) {
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(streamURL),
   })
-      .then(function (response) {
-          return response.json(response);
-      }).then(function (text) {
-          // console.log('POST response:');
-          // console.log(text); 
-          setUsername(idx, text, sports);
-      });
+    .then(function (response) {
+      return response.json(response);
+    })
+    .then(function (text) {
+      // console.log('POST response:');
+      // console.log(text);
+      setUsername(idx, text, sports);
+    });
 }
 
 function setUsername(idx, username, sports) {
-  let currUserInput = document.querySelector("#" + sports + "-user" + idx + " input");
+  let currUserInput = document.querySelector(
+    "#" + sports + "-user" + idx + " input"
+  );
   currUserInput.value = " " + username;
 }
 
@@ -36,7 +39,7 @@ function spin(data) {
   data.userIdx += 1;
   let rotation = 0;
 
-  if (data.numSelected === data.teamsLength) { 
+  if (data.numSelected === data.teamsLength) {
     data.btn.disabled = false;
     return;
   }
@@ -56,7 +59,9 @@ function spin(data) {
 
   data.container.addEventListener("transitionend", function () {
     selectedTeam.classList.add("selected");
-    let currTeamInput = document.querySelector("#" + data.sports + "-team" + data.currTeamIdx + " input");
+    let currTeamInput = document.querySelector(
+      "#" + data.sports + "-team" + data.currTeamIdx + " input"
+    );
     setTimeout(function () {
       currTeamInput.value = " " + selectedTeam.textContent;
     }, 1000);
@@ -82,7 +87,7 @@ const nbaData = {
   numSelected: 0,
   currTeamIdx: 0,
   teamsLength: 0,
-  userIdx: 1
+  userIdx: 1,
 };
 nbaData.teamsLength = nbaData.teamsArray.length;
 nbaData.teamsArray[nbaData.teamsArray.length] = nbaData.teamsArray[0];
@@ -100,8 +105,8 @@ const nflData = {
   numSelected: 0,
   currTeamIdx: 0,
   teamsLength: 0,
-  userIdx: 1
-}
+  userIdx: 1,
+};
 nflData.teamsLength = nflData.teamsArray.length;
 nflData.teamsArray[nflData.teamsArray.length] = nflData.teamsArray[0];
 
@@ -112,14 +117,14 @@ function NFLSpin() {
 /* MLB Wheel Spin */
 const mlbData = {
   sports: "mlb",
-  container: document.querySelector("#lmlb-tab-content .container-2"),
+  container: document.querySelector("#mlb-tab-content .container-2"),
   btn: document.getElementById("mlb-spin-btn"),
   teamsArray: Array.from(document.querySelectorAll("#wheel .mlb-team")),
   numSelected: 0,
   currTeamIdx: 0,
   teamsLength: 0,
-  userIdx: 1
-}
+  userIdx: 1,
+};
 mlbData.teamsLength = mlbData.teamsArray.length;
 mlbData.teamsArray[mlbData.teamsArray.length] = mlbData.teamsArray[0];
 
@@ -127,42 +132,42 @@ function MLBSpin() {
   spin(mlbData);
 }
 
-/* Selecting Tab */ 
-const tabItems = document.querySelectorAll('.tab-item');
-const tabContentItems = document.querySelectorAll('.tab-content-item');
+/* Selecting Tab */
+const tabItems = document.querySelectorAll(".tab-item");
+const tabContentItems = document.querySelectorAll(".tab-content-item");
 
 function selectItem(e) {
   removeBorder();
   removeShow();
-  this.classList.add('tab-border');
+  this.classList.add("tab-border");
   const tabContentItem = document.querySelector(`#${this.id}-content`);
-  tabContentItem.classList.add('show');
+  tabContentItem.classList.add("show");
 }
 
 function removeBorder() {
-  tabItems.forEach(item => item.classList.remove('tab-border'))
+  tabItems.forEach((item) => item.classList.remove("tab-border"));
 }
 
 function removeShow() {
-  tabContentItems.forEach(item => item.classList.remove('show'))
+  tabContentItems.forEach((item) => item.classList.remove("show"));
 }
 
-tabItems.forEach(item => item.addEventListener('click', selectItem));
+tabItems.forEach((item) => item.addEventListener("click", selectItem));
 
 /* Wheel Reset Button */
-document.getElementById("reset-btn").addEventListener("click", function() {
+document.getElementById("reset-btn").addEventListener("click", function () {
   location.reload();
 });
 
 /* Prevent Submit Button from refreshing the page */
-document.getElementById("my-form").addEventListener("submit", function(event) {
+document.getElementById("my-form").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission behavior
   const textField = document.getElementById("my-textfield");
   streamURL = textField.value;
 });
 
 /* Export Break Sheet */
-document.getElementById("export-btn").addEventListener("click", function() {
+document.getElementById("export-btn").addEventListener("click", function () {
   // console.log("Export button clicked");
   // Your data preparation code here
   const dataRows = [];
@@ -171,7 +176,7 @@ document.getElementById("export-btn").addEventListener("click", function() {
   const activeTab = document.querySelector(".show");
   const leftTable = activeTab.querySelector("#left-table");
   const leftRows = leftTable.getElementsByTagName("tr");
-  
+
   // Loop through each row of the left table (skipping the first row)
   for (let i = 1; i < leftRows.length; i++) {
     const row = leftRows[i];
@@ -213,8 +218,9 @@ document.getElementById("export-btn").addEventListener("click", function() {
   });
 
   // Generate the Excel file
-  workbook.xlsx.writeBuffer()
-    .then(function(buffer) {
+  workbook.xlsx
+    .writeBuffer()
+    .then(function (buffer) {
       const blob = new Blob([buffer], { type: "application/octet-stream" });
       const fileName = "data.xlsx";
 
@@ -225,7 +231,7 @@ document.getElementById("export-btn").addEventListener("click", function() {
       link.click();
       // console.log("Export completed");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // console.error("Export error:", error);
     });
 });

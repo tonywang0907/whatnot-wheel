@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container m-5">
+  <h1 class="p-5">Sign Up</h1>
+  <form action=" {{ url_for('sign_up_validation') }} " class="p-5" method="post">
+    <div class="form-floating mt-3">
+      <input
+        type="email1"
+        name="email1"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Email"
+      />
+      <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating mt-3">
+      <input
+        type="username"
+        name="username"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Username"
+      />
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating mt-3">
+      <input
+        type="password1"
+        name="password1"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating mt-3">
+      <input
+        type="password2"
+        name="password2"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">Password (Confirm)</label>
+    </div>
+    <div class="col-12 mt-5">
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
