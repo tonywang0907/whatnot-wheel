@@ -5,6 +5,15 @@ from flask import Flask, jsonify, request, render_template
 from selenium import webdriver
 import time
 import re
+
+import os
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+# driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
  
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -27,7 +36,7 @@ def backend():
 def get_auction_username(link):
     try:
         stream_link = link
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         driver.get(stream_link)
 
         time.sleep(3)
