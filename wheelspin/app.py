@@ -14,6 +14,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 WINDOW_SIZE = "1200,900" 
+# chrome_options = Options()
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
  
 # Flask constructor takes the name of
@@ -42,8 +43,9 @@ def get_auction_username(link):
     try:
         stream_link = link
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        # driver = webdriver.Chrome()
         driver.get(stream_link)
-        driver.save_screenshot('./page_look.png')
+        driver.save_screenshot('./wheelspin/static/img/page_look.png')
         time.sleep(3)
         try:
             lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
