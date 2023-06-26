@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, render_template
 from selenium import webdriver
 import time
 import re
-
+from selenium.webdriver.chrome.options import Options
 import os
 
 chrome_options = webdriver.ChromeOptions()
@@ -13,7 +13,8 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-# driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+WINDOW_SIZE = "1200,900" 
+chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
  
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -27,6 +28,10 @@ def home_page():
     example_embed=''
     return render_template('index.html', embed=example_embed)
 
+@app.route('/debug')
+def debug_page():
+    return render_template('debug.html')
+
 @app.route('/backend', methods=["POST"])
 # ‘/’ URL is bound with hello_world() function.
 def backend():
@@ -38,7 +43,7 @@ def get_auction_username(link):
         stream_link = link
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         driver.get(stream_link)
-
+        driver.save_screenshot('./page_look.png')
         time.sleep(3)
         try:
             lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
