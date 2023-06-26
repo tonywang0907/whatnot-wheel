@@ -40,12 +40,18 @@ def get_auction_username(link):
         driver.get(stream_link)
 
         time.sleep(3)
-        lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
-        lets_go_btn.click()
+        try:
+            lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
+            lets_go_btn.click()
+        except Exception:
+            pass
 
         time.sleep(1)
-        xmark_btn = driver.find_element("xpath", "//*[local-name()='svg' and @data-icon='xmark']")
-        xmark_btn.click()
+        try:
+            xmark_btn = driver.find_element("xpath", "//*[local-name()='svg' and @data-icon='xmark']")
+            xmark_btn.click()
+        except Exception:
+            pass
         
         time.sleep(1)
         sold_btns = driver.find_elements("xpath", "//h5[@data-cy='Sold']")
