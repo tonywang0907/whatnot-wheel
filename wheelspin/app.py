@@ -9,15 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 import os
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-WINDOW_SIZE = "1200,900" 
-# chrome_options = Options()
-chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
- 
+
 # Flask constructor takes the name of
 # current module (__name__) as argument.
 app = Flask(__name__)
@@ -41,14 +33,25 @@ def backend():
         return get_auction_username(request.json)
 
 def get_auction_username(link):
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_argument("--no-sandbox")
+    WINDOW_SIZE = "1200,900" 
+    chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+    
     try:
         stream_link = link
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         # driver = webdriver.Chrome()
         driver.get(stream_link)
-        driver.save_screenshot('./wheelspin/static/img/page_look.png')
-        # time.sleep(3)
-        lets_go_btn = WebDriverWait(driver, timeout=15).until(lambda d: d.find_element("xpath", "//button[@class='oUI6p']"))
+        time.sleep(3)
+        driver.save_screenshot('./wheelspin/static/img/page_look_before.png')
+        lets_go_btn = WebDriverWait(driver, timeout=20).until(lambda d: d.find_element("xpath", "//button[@class='oUI6p']"))
+        driver.save_screenshot('./wheelspin/static/img/page_look_after.png')
         try:
             # lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
             lets_go_btn.click()
