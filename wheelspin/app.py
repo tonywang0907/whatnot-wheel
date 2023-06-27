@@ -6,6 +6,7 @@ from selenium import webdriver
 import time
 import re
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.wait import WebDriverWait
 import os
 
 chrome_options = webdriver.ChromeOptions()
@@ -46,9 +47,10 @@ def get_auction_username(link):
         # driver = webdriver.Chrome()
         driver.get(stream_link)
         driver.save_screenshot('./wheelspin/static/img/page_look.png')
-        time.sleep(3)
+        # time.sleep(3)
+        lets_go_btn = WebDriverWait(driver, timeout=15).until(lambda d: d.find_element("xpath", "//button[@class='oUI6p']"))
         try:
-            lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
+            # lets_go_btn = driver.find_element("xpath", "//button[@class='oUI6p']")
             lets_go_btn.click()
         except Exception:
             pass
