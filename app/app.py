@@ -1,7 +1,7 @@
 
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, flash, jsonify
 from selenium import webdriver
 import time
 import re
@@ -43,7 +43,7 @@ def login_validation():
   if request.method == 'POST':
     css_file = "static/css/style.css"
     title = "Welcome"
-    name = "Welcome " + request.form.get("username").capitalize() + "!"
+    name = "Welcome " + request.form.get("email").capitalize() + "!"
     return render_template("home.html", title=title, name=name, css_file=css_file)
 
 @app.route("/sign_up", methods=["POST"])
@@ -52,23 +52,28 @@ def sign_up():
   title = "Sign Up Page"
   return render_template("sign_up.html", title=title, css_file=css_file)
 
-@app.route("/sign_up_validation", methods=['POST'])
+@app.route("/sign_up_validation", methods=['GET', 'POST'])
 def sign_up_validation():
   if request.method == 'POST':
+    css_file = "static/css/style.css"
+    title = "Welcome"
     email = request.form.get("email1")
     username = request.form.get("username")
     password1 = request.form.get("password1")
     password2 = request.form.get("password2")
-    if len(email) < 4:
-      pass
-    elif len(username) < 2:
-      pass
+    if len(email) < 5:
+      flash('Email must be greater than 4 characters.', category='error')
+    elif len(username) < 5:
+      flash('Username must be greater than 4 characters.', category='error')
     elif password1 != password2 :
-      pass
+      flash('Passwords don\'t match.', category='error')
     elif len(password1) < 7:
-      pass
-    return render_template("home.html")
-  
+      flash('Password must be at least 7 characters.', category='error')
+    else:
+      return render_template("home.html", title=title, css_file=css_file)
+    
+  return render_template("sign_up.html")
+
 # Wheel Backend Route 
 @app.route('/backend', methods=["POST"])
 # ‘/’ URL is bound with hello_world() function.

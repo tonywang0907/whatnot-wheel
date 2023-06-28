@@ -38,24 +38,24 @@ body {
 }
 
 #nba-logo {
-  width: 35px;
-  height: 70px;
-  border-radius: 8px;
+  width: 24px;
+  height: 49px;
+  border-radius: 6px;
 }
 
 #nfl-logo {
-  width: 70px;
-  height: 70px;
+  width: 49px;
+  height: 49px;
 }
 
 #mlb-logo {
-  width: 70px;
-  height: 40px;
+  width: 49px;
+  height: 28px;
 }
 
 .tab-border {
   background: #fff;
-  border: #000 4px solid;
+  border: #000 2px solid;
   border-radius: 50px;
 }
 
@@ -100,7 +100,7 @@ body {
   align-items: center;
 }
 
-#wheel {
+.wheel {
   position: relative;
 }
 
@@ -135,6 +135,8 @@ body {
 
 .container-2 h3 {
   transform: rotate(270deg);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #nba-spin-btn,
@@ -687,15 +689,17 @@ body {
 #left-table,
 #right-table {
   background-color: #fff;
-  border: 5px solid #000;
+  border-collapse: separate;
+  border: 2px solid #000;
   border-radius: 50px;
+  text-align: center;
   padding: 20px;
   margin: 10px;
 }
 
 .input-border {
   background: #fff;
-  border: 5px solid #000;
+  border: 2px solid #000;
   border-radius: 50px;
 }
 /* Hide content initially */
@@ -720,13 +724,13 @@ body {
 /* Reset Button */
 #wheel-btns #reset-btn,
 #wheel-btns #export-btn {
-  font-weight: 500;
+  font-weight: normal;
   color: #000;
   background: #fff;
   height: auto;
   text-decoration: none;
   padding: 5px 10px;
-  border: 5px solid #000;
+  border: 2px solid #000;
   border-radius: 50px;
   cursor: pointer;
   margin-left: 20px;
@@ -746,16 +750,16 @@ form {
   background: #fff;
   padding: 5px 10px;
   width: 250px;
-  border: 5px solid #000;
+  border: 2px solid #000;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
 
 #wheel-btns button[type="submit"] {
-  font-weight: 500;
+  font-weight: normal;
   padding: 5px 10px;
   background: #fff;
-  border: 5px solid #000;
+  border: 2px solid #000;
   border-left: none;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
@@ -763,19 +767,8 @@ form {
 }
 
 #wheel-btns button[type="submit"]:active {
-  font-weight: 900;
+  font-weight: bold;
 }
 
-.rm-underline {
-  text-decoration: none;
-}
-
-.login-green {
-  color: #198754;
-}
-
-.login-green:hover {
-  color: #fff;
-}
 
 
